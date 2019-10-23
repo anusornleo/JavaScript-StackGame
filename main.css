@@ -1,0 +1,19 @@
+html::-webkit-scrollbar { width: 0 !important }
+
+.modal-body::-webkit-scrollbar { width: 0 !important }
+
+.boxstarter {
+    background-color: red;
+    position: relative;
+    height: 3vh;
+    margin: auto;
+    top: 6vh;
+}
+
+.box {
+    background-color: rgb(255, 145, 0);
+    position: relative;
+    width: 30vh; 
+    height: 3vh;
+    /* top: 90vh; */
+}
