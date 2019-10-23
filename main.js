@@ -17,8 +17,8 @@ document.getElementById("boxstarter").style.width =
 
 function myFunction() {
   if (modeGame == "home") {
-    console.log("go start");
     modeGame = "play";
+
     moveBox();
   } else {
   }
@@ -44,6 +44,7 @@ function moveBox() {
   boxSlide.style.backgroundColor = "hsl(" + color + ", 50%, 50%)";
 
   if (listSlidebox.length == 0) {
+    document.getElementById("app").removeChild(document.getElementById("home"))
     boxSlide.style.width = Math.ceil(containerWidth / 2) + "px";
     listleft.push(parseInt($("#boxstarter").css("margin-left")));
     stop = false;
@@ -60,8 +61,6 @@ function moveBox() {
           parseInt(document.getElementById(listSlidebox[0]).style.width) -
           (listleft[0] - leftSlide);
 
-        console.log("boxWidth = " + boxWidth);
-
         document.getElementById(listSlidebox[0]).style.left =
           listleft[0] -
           leftSlide +
@@ -73,7 +72,6 @@ function moveBox() {
         listLength.unshift(boxWidth);
       } else {
         let boxWidth = listleft[0] + listLength[0] - leftSlide;
-        console.log("boxWidth = " + boxWidth);
         document.getElementById(listSlidebox[0]).style.width = boxWidth + "px";
         document.getElementById(listSlidebox[1]).style.width = boxWidth + "px";
 
