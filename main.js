@@ -2,7 +2,8 @@ let running = false;
 let topRunning = 0;
 let done = true;
 let containerWidth = document.getElementById("container").offsetWidth;
-let containerHeight = parseInt(document.getElementById("sectionTop").style.height);
+let container_ofHeight = parseInt(document.getElementById("sectionTop").style.height);
+let containerHeight = container_ofHeight;
 let color = 0;
 let listSlidebox = [];
 let stop;
@@ -20,7 +21,6 @@ document.getElementById("boxstarter").style.width =
   Math.ceil(containerWidth / 2) + "px";
 
 function main() {
-  console.log(modeGame);
   if (modeGame == "home") {
   } else if (modeGame == "play") {
     moveBox();
@@ -30,7 +30,7 @@ function main() {
 }
 
 function chengeMode() {
-  console.log("old mode = " + modeGame);
+
   if (modeGame == "home") {
     homeScreen = document.getElementById("home");
     document.getElementById("app").removeChild(document.getElementById("home"));
@@ -38,7 +38,6 @@ function chengeMode() {
       .getElementById("app")
       .removeChild(document.getElementById("finish"));
   } else {
-    console.log(document.getElementById("scoreElementId"))
     $("#scoreElementId").remove();
     
     document
@@ -52,7 +51,6 @@ function chengeMode() {
   }
 
   modeGame = "play";
-  console.log("new mode = " + modeGame);
 
   moveBox();
 }
@@ -67,7 +65,7 @@ function resultScreen() {
   topRunning = 0;
   done = true;
   containerWidth = document.getElementById("container").offsetWidth;
-  containerHeight = document.getElementById("container").style.height;
+  containerHeight = container_ofHeight
   color = 0;
   listSlidebox = [];
   stop;
@@ -139,7 +137,6 @@ function moveBox() {
         main();
       }
       score += 1;
-      console.log(score);
       stop = false;
       clearInterval(listSlidebox[0]);
       listSlidebox.shift();
