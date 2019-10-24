@@ -2,36 +2,89 @@ let running = false;
 let topRunning = 0;
 let done = true;
 let containerWidth = document.getElementById("container").offsetWidth;
-let containerHeight = 50;
+let containerHeight = parseInt(document.getElementById("sectionTop").style.height);
 let color = 0;
 let listSlidebox = [];
 let stop;
 let listLength = [Math.ceil(containerWidth / 2)];
 let nowLength = Math.ceil(containerWidth / 2);
 let listleft = [];
+let homeScreen;
+let finishScreen = document.getElementById("finish");
+let boxstarterElement = document.getElementById("boxstarter");
+let score = 0;
 
 let modeGame = "home";
 
 document.getElementById("boxstarter").style.width =
   Math.ceil(containerWidth / 2) + "px";
 
-function myFunction() {
+function main() {
+  console.log(modeGame);
   if (modeGame == "home") {
-    modeGame = "play";
-
+  } else if (modeGame == "play") {
     moveBox();
-  } else {
+  } else if (modeGame == "finish") {
+    resultScreen();
   }
 }
 
+function chengeMode() {
+  console.log("old mode = " + modeGame);
+  if (modeGame == "home") {
+    homeScreen = document.getElementById("home");
+    document.getElementById("app").removeChild(document.getElementById("home"));
+    document
+      .getElementById("app")
+      .removeChild(document.getElementById("finish"));
+  } else {
+    console.log(document.getElementById("scoreElementId"))
+    $("#scoreElementId").remove();
+    
+    document
+      .getElementById("app")
+      .removeChild(document.getElementById("finish"));
+
+    document.getElementById("sectionTop").style.height = 0 + "px";
+    $("#container").empty();
+    document.getElementById("container").appendChild(boxstarterElement);
+    score = 0;
+  }
+
+  modeGame = "play";
+  console.log("new mode = " + modeGame);
+
+  moveBox();
+}
+
+function resultScreen() {
+  document.getElementById("app").appendChild(finishScreen);
+  let scoreElement = document.createElement("h1");
+  scoreElement.id = "scoreElementId"
+  scoreElement.innerText = score;
+  document.getElementById("finishPage").appendChild(scoreElement);
+  running = false;
+  topRunning = 0;
+  done = true;
+  containerWidth = document.getElementById("container").offsetWidth;
+  containerHeight = document.getElementById("container").style.height;
+  color = 0;
+  listSlidebox = [];
+  stop;
+  listLength = [Math.ceil(containerWidth / 2)];
+  nowLength = Math.ceil(containerWidth / 2);
+  listleft = [];
+}
+
 function moveBox() {
-  let redbox = new Object();
   let go = true;
   let boxSlide = document.createElement("div");
   boxSlide.className = "box";
   document.getElementById("container").appendChild(boxSlide);
   document.getElementById("sectionTop").style.height = containerHeight + "vh";
-  containerHeight += 3;
+  if(score >= 5){
+    containerHeight += 3;
+  }
   let pos = 0;
 
   boxSlide.style.top = topRunning + "vh";
@@ -44,7 +97,6 @@ function moveBox() {
   boxSlide.style.backgroundColor = "hsl(" + color + ", 50%, 50%)";
 
   if (listSlidebox.length == 0) {
-    document.getElementById("app").removeChild(document.getElementById("home"))
     boxSlide.style.width = Math.ceil(containerWidth / 2) + "px";
     listleft.push(parseInt($("#boxstarter").css("margin-left")));
     stop = false;
@@ -72,12 +124,22 @@ function moveBox() {
         listLength.unshift(boxWidth);
       } else {
         let boxWidth = listleft[0] + listLength[0] - leftSlide;
+
         document.getElementById(listSlidebox[0]).style.width = boxWidth + "px";
         document.getElementById(listSlidebox[1]).style.width = boxWidth + "px";
 
         listLength.unshift(boxWidth);
         listleft.unshift(leftSlide);
       }
+      if (listLength[0] <= 0) {
+        document
+          .getElementById("container")
+          .removeChild(document.getElementById(listSlidebox[0]));
+        modeGame = "finish";
+        main();
+      }
+      score += 1;
+      console.log(score);
       stop = false;
       clearInterval(listSlidebox[0]);
       listSlidebox.shift();
@@ -94,44 +156,9 @@ function moveBox() {
         pos--;
         boxSlide.style.left = pos + "px";
       }
-      //   pos++;
-      //   boxSlide.style.left = pos + "px";
     }
   });
   boxSlide.id = id;
   listSlidebox.push(boxSlide.id);
   listLength.push(parseInt(boxSlide.style.width));
-
-  //   let box = document.getElementById("boxslide");
-  //   let pos = 0;
-  //   let id = setInterval(frame, 10);
-  //   let containerWidth = document.getElementById("container").offsetWidth;
-  //   let boxSlideWidth = document.getElementById("boxslide").offsetWidth;
-  //   let go = true;
-  //   console.log(running + " " + id);
-
-  //   function frame() {
-  //     if (running == true) {
-  //       console.log("stop" + " " + id);
-  //       clearInterval(id);
-  //     } else {
-  //       if (
-  //         pos ==
-  //         containerWidth -
-  //           boxSlideWidth -
-  //           parseInt($("#boxslide").css("margin-left"))
-  //       ) {
-  //         go = false;
-  //       } else if (pos == 0) {
-  //         go = true;
-  //       }
-  //       if (go) {
-  //         pos++;
-  //         box.style.left = pos + "px";
-  //       } else {
-  //         pos--;
-  //         box.style.left = pos + "px";
-  //       }
-  //     }
-  //   }
 }

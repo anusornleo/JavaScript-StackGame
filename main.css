@@ -1,6 +1,10 @@
-html::-webkit-scrollbar { width: 0 !important }
+html::-webkit-scrollbar {
+    width: 0 !important
+}
 
-.modal-body::-webkit-scrollbar { width: 0 !important }
+.modal-body::-webkit-scrollbar {
+    width: 0 !important
+}
 
 .boxstarter {
     background-color: red;
@@ -13,7 +17,7 @@ html::-webkit-scrollbar { width: 0 !important }
 .box {
     background-color: rgb(255, 145, 0);
     position: relative;
-    width: 30vh; 
+    width: 30vh;
     height: 3vh;
     /* top: 90vh; */
 }
@@ -24,7 +28,7 @@ html::-webkit-scrollbar { width: 0 !important }
     background-color: aquamarine;
 }
 
-h1{
+h1 {
     text-align: center;
     font-size: 10vh;
     position: relative;
@@ -32,9 +36,45 @@ h1{
     color: white;
 }
 
-#startPage{
-    background: #0F2027;  /* fallback for old browsers */
-    background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);  /* Chrome 10-25, Safari 5.1-6 */
-    background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-    
+#startPage {
+    background: #0F2027;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.backgroundGradient{
+    background: #0F2027;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#finishPage{
+    background: none;
+}
+
+#home {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+}
+
+#finish{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 2;
+}
+
+#play {
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    position: absolute;
 }
