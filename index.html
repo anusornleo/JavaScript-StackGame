@@ -13,7 +13,7 @@
     <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="main.css">
 
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet">
     <title>Stack</title>
 </head>
 
@@ -22,15 +22,15 @@
         <div onclick="chengeMode()" id="home">
             <div id="startPage" class="mx-auto h-48 w-full sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/3 lg:rounded-lg"
                 style="height: 100%;">
-                <h1 class="font-bold">Tap to Start</h1>
+                <h1 class="font-bold" style="font-size: 15vh;">Stack</h1>
+                <h1 style="font-size: 30px;">Tap to Start</h1>
 
             </div>
         </div>
 
         <div onclick="chengeMode()" id="finish">
-            <div id="finishPage" class="mx-auto h-48 w-full sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/3 lg:rounded-lg"
-                style="height: 100%;">
-                <h1 class="font-bold">Result</h1>
+            <div id="finishPage" class="mx-auto w-full sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/3 lg:rounded-lg">
+                <h1 style="font-size: 35px;" class="font-bold">Tab to play again</h1>
             </div>
         </div>
 
@@ -38,39 +38,13 @@
             <div id="main-container" onclick="main()"
                 class="mx-auto w-full sm:w-full md:w-1/2 lg:w-1/3 xl:w-1/3 bg-gray-500 lg:rounded-lg"
                 style="height: 100vh;">
-                <div id="sectionTop" class="w-full backgroundGradient" style="height: 70vh;"></div>
-                <div id="container" class="w-full" style="height: 30vh;background-color: #0F2027;">
+                <div id="sectionTop" class="w-full backgroundGradient" style="height: 60vh;"></div>
+                <div id="container" class="w-full" style="height: 40vh;background-color: #0F2027;">
                     <div id="boxstarter" class="boxstarter"></div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyA-cFK97s02aq_jrFpuEMSWCU-h-kFCQTM",
-            authDomain: "mygamejavascript.firebaseapp.com",
-            databaseURL: "https://mygamejavascript.firebaseio.com",
-            projectId: "mygamejavascript",
-            storageBucket: "mygamejavascript.appspot.com",
-            messagingSenderId: "1051616467921",
-            appId: "1:1051616467921:web:bc02365bb5590a943edef0"
-        };
-        // Initialize Firebase
-        firebase.initializeApp(firebaseConfig);
-
-        function signin() {
-
-            db.collection("leaderboard")
-                .get()
-                .then(querySnapshot => {
-                    querySnapshot.forEach(doc => {
-                        console.log(`${doc.id} => ${doc.data()}`);
-                    });
-                });
-        }
-    </script>
 
 
     <script src="main.js"></script>

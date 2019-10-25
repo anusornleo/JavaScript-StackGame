@@ -7,7 +7,7 @@ html::-webkit-scrollbar {
 }
 
 .boxstarter {
-    background-color: red;
+    /* background-color: hsl(350, 50%, 60%); */
     position: relative;
     height: 3vh;
     margin: auto;
@@ -34,27 +34,23 @@ h1 {
     position: relative;
     padding: 30px;
     color: white;
+    font-family: 'Nunito', sans-serif;
 }
 
 #startPage {
     background: #0F2027;
-    /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
-.backgroundGradient{
+.backgroundGradient {
     background: #0F2027;
-    /* fallback for old browsers */
     background: -webkit-linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
-    /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to bottom, #2C5364, #203A43, #0F2027);
-    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
-#finishPage{
+#finishPage {
     background: none;
 }
 
@@ -65,9 +61,8 @@ h1 {
     z-index: 3;
 }
 
-#finish{
+#finish {
     width: 100%;
-    height: 100%;
     position: absolute;
     z-index: 2;
 }
@@ -77,4 +72,9 @@ h1 {
     height: 100%;
     z-index: 1;
     position: absolute;
+}
+
+#container {
+    background: rgb(15, 32, 39);
+    background: linear-gradient(180deg, rgba(15, 32, 39, 1) 0%, rgba(5, 20, 25, 1) 100%);
 }

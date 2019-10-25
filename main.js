@@ -1,10 +1,18 @@
+let color = Math.floor(Math.random() * 72);
+color = 0 + (color - 1) * 5;
+console.log(color);
+
+document.getElementById("boxstarter").style.backgroundColor = "hsl(" + color + ", 50%, 60%)";
+color += 5;
+
 let running = false;
 let topRunning = 0;
 let done = true;
 let containerWidth = document.getElementById("container").offsetWidth;
-let container_ofHeight = parseInt(document.getElementById("sectionTop").style.height);
+let container_ofHeight = parseInt(
+  document.getElementById("sectionTop").style.height
+);
 let containerHeight = container_ofHeight;
-let color = 0;
 let listSlidebox = [];
 let stop;
 let listLength = [Math.ceil(containerWidth / 2)];
@@ -30,23 +38,39 @@ function main() {
 }
 
 function chengeMode() {
-
   if (modeGame == "home") {
     homeScreen = document.getElementById("home");
-    document.getElementById("app").removeChild(document.getElementById("home"));
-    document
-      .getElementById("app")
-      .removeChild(document.getElementById("finish"));
+    $("#home").fadeOut()
+    // document.getElementById("app").removeChild(document.getElementById("home"));
+    // document
+    //   .getElementById("app")
+    //   .removeChild(document.getElementById("finish"));
+
+    $("#finish").fadeOut(0)
   } else {
+
+
+    // document
+    //   .getElementById("app")
+    //   .removeChild(document.getElementById("finish"));
     $("#scoreElementId").remove();
-    
-    document
-      .getElementById("app")
-      .removeChild(document.getElementById("finish"));
+    $("#finish").fadeOut(200)
+ 
 
     document.getElementById("sectionTop").style.height = 0 + "px";
     $("#container").empty();
+
+    color = Math.floor(Math.random() * 72);
+    color = 0 + (color - 1) * 5;
+
+    
     document.getElementById("container").appendChild(boxstarterElement);
+    if (color == 360) {
+      color = 0;
+    }
+ 
+    document.getElementById("boxstarter").style.backgroundColor = "hsl(" + color + ", 50%, 60%)";
+    color += 5;
     score = 0;
   }
 
@@ -56,17 +80,20 @@ function chengeMode() {
 }
 
 function resultScreen() {
-  document.getElementById("app").appendChild(finishScreen);
+  console.log(containerHeight + 30);
+  $("#finish").fadeIn();
+  // document.getElementById("app").appendChild(finishScreen);
+  document.getElementById("finish").style.height = containerHeight + 37 + "vh";
   let scoreElement = document.createElement("h1");
-  scoreElement.id = "scoreElementId"
+  scoreElement.id = "scoreElementId";
   scoreElement.innerText = score;
   document.getElementById("finishPage").appendChild(scoreElement);
   running = false;
   topRunning = 0;
   done = true;
   containerWidth = document.getElementById("container").offsetWidth;
-  containerHeight = container_ofHeight
-  color = 0;
+  containerHeight = container_ofHeight;
+
   listSlidebox = [];
   stop;
   listLength = [Math.ceil(containerWidth / 2)];
@@ -80,7 +107,7 @@ function moveBox() {
   boxSlide.className = "box";
   document.getElementById("container").appendChild(boxSlide);
   document.getElementById("sectionTop").style.height = containerHeight + "vh";
-  if(score >= 5){
+  if (score >= 5) {
     containerHeight += 3;
   }
   let pos = 0;
@@ -92,7 +119,7 @@ function moveBox() {
     color = 0;
   }
   color += 5;
-  boxSlide.style.backgroundColor = "hsl(" + color + ", 50%, 50%)";
+  boxSlide.style.backgroundColor = "hsl(" + color + ", 50%, 60%)";
 
   if (listSlidebox.length == 0) {
     boxSlide.style.width = Math.ceil(containerWidth / 2) + "px";
@@ -156,6 +183,7 @@ function moveBox() {
     }
   });
   boxSlide.id = id;
+  console.log(boxSlide.id)
   listSlidebox.push(boxSlide.id);
   listLength.push(parseInt(boxSlide.style.width));
 }
